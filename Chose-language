@@ -1,0 +1,26 @@
+•	Lệnh IF lựa chọn ngôn ngữ theo cột (Collaboration, Dictionary)
+Collaboration.cshtml
+@if (Session[Horizone.Common.CommonConstants.CurrentCulture].ToString() == "en")
+         {
+           <p>
+                @Html.Raw(item.FonctionEn)
+           </p>
+            <p style="font-weight:bold;">
+           &diams; @StaticResource.Resources.Affiliation
+           </p>
+           <p>
+                @Html.Raw(item.AffiliationEn)
+           </p>
+         }
+•	Lệnh IF lựa chọn ngôn ngữ theo bảng tin (présent, News)
+pageActivity.cshtml
+@foreach (var item in Model)
+{
+    if (item.Language.Symbol == Session[Horizone.Common.CommonConstants.CurrentCulture].ToString())
+    {
+        <p>&diams; @Html.Raw(item.DateofActivity)| @Html.Raw(item.NameActivity)| @Html.Raw(item.Description)|</p>
+        <a href=@item.UlrActivity> @StaticResource.Resources.LearnMore  &raquo;</a>
+    }
+}
+
+
